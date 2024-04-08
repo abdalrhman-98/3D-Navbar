@@ -1,0 +1,274 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+  overflow: hidden;
+  position: relative;
+  background: #000;
+}
+
+.navbar {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0 10vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.brand {
+  background-image: url(./images/logo.png);
+  background-size: cover;
+  height: 50px;
+  width: 100px;
+  margin-top: 10px;
+}
+
+.toggle-btn {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.toggle-btn span {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    transition: 1s;
+}
+
+.toggle-btn span:nth-child(2){
+    top: 50%;
+    width: 70%;
+}
+
+.toggle-btn span:nth-child(3){
+    top: 75%;
+    width: 40%;
+}
+
+.toggle-btn.active span:nth-child(2){
+    display: none;
+}
+
+.toggle-btn.active span:nth-child(1){
+    transform: rotate(45deg);
+    top: 50%;
+}
+
+.toggle-btn.active span:nth-child(3){
+    transform: rotate(-45deg);
+    top: 50%;
+    width: 100%;
+}
+
+.page-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: 0.8s;
+    left: 0;
+}
+
+ /* .page-container::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: 0.8s;
+    background-image: url(./images/home.jpg);
+    opacity: 0.2;
+    padding-top: 500px;
+    transform: scaleY(-1);
+}  */
+
+.overlay{
+    position: fixed;
+    bottom: 0;
+    top: -100%;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    z-index: 3;
+}
+
+.page{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    flex-direction: column;
+}
+
+.page.active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.page.home{
+    background-image: url(./images/river_hills_mountains_1149976_1920x1080.jpg);
+    background-size: cover;
+}
+
+.page.project{
+    background-image: url(./images/project.jpg);
+    background-size: cover;
+}
+
+.page.about{
+    background-image: url(./images/about.jpg);
+    background-size: cover;
+}
+
+.page .title{
+    font-size: 72px;
+    color: white;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px #000;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    padding: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+}
+
+.page .para{
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    width: 50%;
+    padding: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+}
+
+.page-container.active{
+    left: -10%;
+    transform: rotateY(45deg) scale(0.55);
+    filter: blur(1.3px);
+}
+
+.nav-list{
+    position: absolute;
+    top: 50%;
+    right: 10vw;
+    transform: translateY(-50%);
+    transition: 1s;
+    opacity: 0;
+}
+
+.link{
+    position: relative;
+    color: #fff;
+    font-size: 32px;
+    padding: 10px;
+    transition: 0.5s;
+    list-style: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.link:hover{
+    opacity: 0.8;
+    color: rgb(255, 98, 98);
+    transform: translateX(-15px);
+    scale: 1.2;
+}
+
+.nav-list.show{
+    opacity: 1;
+
+}
+
+@keyframes slide {
+    100%{
+        top: 100%;
+    }
+}
+
+
+@media(max-width:1000px){
+    .page .title{
+        font-size: 65px;
+    }
+
+    .page .para{
+        font-size: 20px;
+    }
+
+    .toggle-btn {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .toggle-btn span {
+          height: 2px;
+      }
+      
+    .brand {
+        height: 40px;
+        width: 80px;
+    }
+}
+
+@media(max-width:700px){
+    .page .title{
+        font-size: 50px;
+    }
+
+    .page .para{
+        font-size: 15px;
+    }
+
+    .toggle-btn {
+        width: 30px;
+        height: 30px;
+      }
+      
+    .brand {
+        height: 30px;
+        width: 70px;
+    }
+
+    .link{
+        font-size: 28px;
+    }
+}
+
+@media(max-width:500px){
+
+    body {
+        perspective: 1400px;
+    }
+
+    .link{
+        font-size: 22px;
+    }
+}
