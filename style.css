@@ -173,6 +173,7 @@ body {
     left: -10%;
     transform: rotateY(45deg) scale(0.55);
     filter: blur(1.3px);
+    width: 200%;
 }
 
 .nav-list{
@@ -204,7 +205,6 @@ body {
 
 .nav-list.show{
     opacity: 1;
-
 }
 
 @keyframes slide {
@@ -239,6 +239,7 @@ body {
 }
 
 @media(max-width:700px){
+
     .page .title{
         font-size: 50px;
     }
@@ -258,17 +259,52 @@ body {
     }
 
     .link{
-        font-size: 28px;
+        font-size: 25px;
     }
-}
 
-@media(max-width:500px){
+    .link:hover{
+        opacity: 0.8;
+        color: rgb(255, 98, 98);
+        transform: translateY(10px);
+        scale: 1.2;
+    }
+
 
     body {
         perspective: 1400px;
     }
 
-    .link{
-        font-size: 22px;
+    .overlay {
+        position: fixed;
+        bottom: 0;
+        left: -100%;
+        height: 100%;
+        width: 100%;
+        background: #000;
+        z-index: 3;
+        top: 0;
     }
+
+    @keyframes slide {
+        100%{
+            left: 100%;
+        }
+    }
+
+    .nav-list{
+        display: flex;
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        transform: translatex(-50%);
+        transition: 1s;
+        opacity: 0;
+    }
+
+    .page-container.active{
+        position: absolute;
+        top: 15%;
+        left: -50%;
+    }
+
 }
